@@ -2,6 +2,10 @@
 {
     internal interface IAccount
     {
-        void CalculateInterest();
+        /// <summary>
+        /// Метод для расчёта процентной ставки
+        /// </summary>
+        /// <param name="balance"></param>
+        void CalculateInterest(double balance);
     }
 }
