@@ -1,29 +1,22 @@
 ﻿namespace Practices
 {
-    public static class Calculator
+    internal class Calculator
     {
-        public static void CalculateInterest(Account account)
+        public Calculator(IAccount account)
         {
-            if (account.Type == "Обычный")
-            {
-                // расчет процентной ставки обычного аккаунта по правилам банка
-                account.Interest = account.Balance * 0.4;
+            Account = account;
+        }
 
-                if (account.Balance < 1000)
-                {
-                    account.Interest -= account.Balance * 0.2;
-                }
+        public IAccount Account { get; }
 
-                if (account.Balance < 50000)
-                {
-                    account.Interest -= account.Balance * 0.4;
-                }
-            }
-            else if (account.Type == "Зарплатный")
-            {
-                // расчет процентной ставк зарплатного аккаунта по правилам банка
-                account.Interest = account.Balance * 0.5;
-            }
+        public double Balance { get; set; }
+
+        /// <summary>
+        /// Метод для запуска расчёта
+        /// </summary>
+        public void Calculate()
+        {
+            Account.CalculateInterest(Balance);
         }
     }
 }
